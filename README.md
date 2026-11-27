@@ -1,40 +1,49 @@
-# Royal Nile — Store Simulator
+# Royal Nile — Simple Store Simulator
 
-A desktop store simulation built with **F# and Windows Forms**. Royal Nile allows users to browse an Egyptian-inspired product catalog, manage a shopping cart, and complete a simulated checkout.
+A desktop store simulation built with **F#** and **Windows Forms (.NET 10)**. Royal Nile allows users to browse an Egyptian-inspired product catalog priced in EGP, manage a shopping cart, and complete a simulated checkout.
 
 ## Features
 
-- **Product Catalog:** Browse 10 Egyptian-inspired products with their names, descriptions, and prices.
-- **Live Search:** Filter products by name or description.
-- **Product Preview:** View the selected product's details and price.
-- **Shopping Cart:** Add products, remove selected items, and track the cart's item count.
+- **Product Catalog:** Browse 10 Egyptian-inspired products with their names, descriptions, and prices in EGP.
+- **Live Search:** Filter products dynamically by name or description.
+- **Product Preview:** View the selected product's full details and price.
+- **Shopping Cart:** Add products by name, remove selected items, and track the live cart item count.
 - **Cart Summary:** View grouped products, quantities, unit prices, subtotals, and the overall total.
-- **Checkout:** Review a dated receipt and confirm the purchase. Completing checkout clears the cart.
+- **Checkout:** Review a dated itemized receipt and confirm the purchase, which clears the cart upon completion.
 
 ## User Interface
 
-The application uses a custom Windows Forms interface with a Royal Plum and Lavender color scheme. It includes a product catalog, shopping cart panel, cart summary, and checkout receipt.
+The application features a custom **Windows Forms** interface designed with a **Royal Plum and Lavender** theme, including a product catalog table, live search bar, shopping cart panel, cart summary dialog, and checkout receipt.
 
-## Implementation
+## Functional Programming Concepts
 
-The project uses F# features and collection operations to handle store data and cart management:
+The core logic is implemented in F# following core Functional Programming principles:
 
-- **Records:** Represent products and cart line items.
-- **Maps:** Store and retrieve catalog products.
-- **Lists:** Represent cart contents and support cart operations.
-- **Pattern Matching and Recursion:** Handle removing individual items from the cart.
-- **Collection Operations:** Use `List.choose`, `List.groupBy`, and `List.sortBy` to retrieve and organize cart data.
-- **Filtering:** Search the catalog by matching product names and descriptions.
+- **Immutability:** Store data uses immutable structures—`Record` types for products, an F# `Map<string, Product>` for the catalog, and an immutable `string list` for the shopping cart (adding or removing items returns a new list without mutating existing state).
+- **Pattern Matching & Recursion:** `match` expressions handle `Map.tryFind` lookups safely and recursively remove a single occurrence of an item from the cart.
+- **First-Class Functions & Pipelines:** Higher-order collection functions (`List.choose`, `List.groupBy`, `List.sortBy`, `List.sumBy`, and `Map.filter`) are combined with the pipe operator (`|>`) to search products, organize cart items, and calculate totals.
+
+## Project Structure
+
+```text
+Simple-Store-Simulator-FSharp/
+├── SimpleStore.fsproj   # .NET 10 Windows Forms project configuration
+├── Models.fs            # Product record definition and Egyptian product catalog (Map)
+├── StoreLogic.fs        # Pure functional cart operations, search, and total calculation
+├── UI.fs                # Custom Royal Plum & Lavender Windows Forms interface
+├── Program.fs           # Application entry point
+└── README.md            # Project documentation
+```
 
 ## Technologies
 
-- **F#** — Application logic and data management.
+- **F#** — Functional application logic and data modeling.
 - **.NET 10** — Runtime and framework.
-- **Windows Forms** — Desktop user interface.
+- **Windows Forms** — Desktop graphical user interface.
 
 ## Getting Started
 
-**Requirements:** Windows and the .NET 10 SDK.
+**Requirements:** Windows and the [.NET 10 SDK](https://dotnet.microsoft.com/download).
 
 1. Clone the repository:
 
@@ -54,4 +63,3 @@ The project uses F# features and collection operations to handle store data and 
    dotnet run
    ```
 
-   ```
