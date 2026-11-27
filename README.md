@@ -1,37 +1,40 @@
 # Royal Nile — Store Simulator
 
-A desktop store simulation built with **F# and Windows Forms**. The application allows users to browse a product catalog, manage a shopping cart, and complete a simulated checkout.
+A desktop store simulation built with **F# and Windows Forms**. Royal Nile allows users to browse an Egyptian-inspired product catalog, manage a shopping cart, and complete a simulated checkout.
 
 ## Features
 
-- **Product Catalog:** Browse a collection of Egyptian-inspired products with names, descriptions, and prices.
+- **Product Catalog:** Browse 10 Egyptian-inspired products with their names, descriptions, and prices.
 - **Live Search:** Filter products by name or description.
-- **Shopping Cart:** Add products, remove selected items, and view quantities and subtotals.
-- **Order Summary:** Calculate the cart total and review the order before checkout.
-- **Checkout:** Display a receipt with product details, quantities, subtotals, and the final amount.
+- **Product Preview:** View the selected product's details and price.
+- **Shopping Cart:** Add products, remove selected items, and track the cart's item count.
+- **Cart Summary:** View grouped products, quantities, unit prices, subtotals, and the overall total.
+- **Checkout:** Review a dated receipt and confirm the purchase. Completing checkout clears the cart.
 
-## Interface
+## User Interface
 
-The application features a custom Windows Forms interface with a Royal Plum and Lavender theme, including a product catalog, cart panel, and checkout receipt.
+The application uses a custom Windows Forms interface with a Royal Plum and Lavender color scheme. It includes a product catalog, shopping cart panel, cart summary, and checkout receipt.
 
-## Built With
+## Implementation
+
+The project uses F# features and collection operations to handle store data and cart management:
+
+- **Records:** Represent products and cart line items.
+- **Maps:** Store and retrieve catalog products.
+- **Lists:** Represent cart contents and support cart operations.
+- **Pattern Matching and Recursion:** Handle removing individual items from the cart.
+- **Collection Operations:** Use `List.choose`, `List.groupBy`, and `List.sortBy` to retrieve and organize cart data.
+- **Filtering:** Search the catalog by matching product names and descriptions.
+
+## Technologies
 
 - **F#** — Application logic and data management.
 - **.NET 10** — Runtime and framework.
 - **Windows Forms** — Desktop user interface.
 
-## Functional Programming Concepts
-
-The project applies several F# concepts, including:
-
-- **Immutable data:** Product and cart data are represented using immutable records and collections.
-- **Pattern matching:** Used to handle cart operations.
-- **Higher-order functions:** Collection operations such as `List.map`, `List.filter`, and `List.groupBy` support data processing.
-- **Pure functions:** Core store operations separate business logic from the user interface.
-
 ## Getting Started
 
-**Requirements:** .NET 10 SDK and Windows.
+**Requirements:** Windows and the .NET 10 SDK.
 
 1. Clone the repository:
 
@@ -49,4 +52,6 @@ The project applies several F# concepts, including:
 
    ```bash
    dotnet run
+   ```
+
    ```
